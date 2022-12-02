@@ -7,7 +7,12 @@ urlpatterns = [
     path("cursosApi/", views.cursosapi),
     path("profesores/", views.profesores),
     path("busquedaCurso/", views.buscarcurso),
-    path("buscar/", views.buscar)
+    path("buscar/", views.buscar),
+    path("leerCurso/", views.leer_cursos),
+    path("crearCurso/", views.crear_curso),
+    path("editarCurso/", views.editar_curso),
+    path("eliminarCurso/", views.eliminar_curso),
+    path("curso/list/", views.CursoList.as_view()),
 
 
 ]

@@ -1,3 +1,4 @@
+from django.views.generic import ListView
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import Curso
@@ -47,3 +48,33 @@ def buscar(request):
 
 def buscarcurso(request):
     return render(request, 'AppCoder/busquedaCurso.html')
+
+
+def leer_cursos(request):
+    cursos_all = Curso.objects.all()
+    return HttpResponse(serializers.serialize('json', cursos_all))
+
+
+def crear_curso(request):
+    curso = Curso(nombre='CursoTest', camada=199, numero_dia=19)
+    curso.save()
+    return HttpResponse(f'Curso {curso.nombre} ha sido creado')
+
+
+def editar_curso(request):
+    nombre_consulta = 'CursoTest'
+    Curso.objects.filter(nombre=nombre_consulta).update(
+        nombre='NombreNuevoCursoTest')
+    return HttpResponse(f'Curso {nombre_consulta} ha sido actualizado')
+
+
+def eliminar_curso(request):
+    nombre_nuevo = 'NombreNuevoCursoTest'
+    curso = Curso.objects.get(nombre=nombre_nuevo)
+    curso.delete()
+    return HttpResponse(f'Curso {nombre_nuevo} ha sido eliminado')
+
+
+class CursoList(ListView):
+    model = Curso
+    template = 'AppCoder/curso_list.html'
