@@ -1,3 +1,4 @@
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -78,3 +79,9 @@ def eliminar_curso(request):
 class CursoList(ListView):
     model = Curso
     template = 'AppCoder/curso_list.html'
+
+
+class CursoCreate(CreateView):
+    model = Curso
+    fields = '__all__'
+    success_url = '/AppCoder/cursos/list/'

@@ -12,7 +12,8 @@ urlpatterns = [
     path("crearCurso/", views.crear_curso),
     path("editarCurso/", views.editar_curso),
     path("eliminarCurso/", views.eliminar_curso),
-    path("curso/list/", views.CursoList.as_view()),
+    path("cursos/list/", views.CursoList.as_view()),
+    path("cursos/create/", views.CursoCreate.as_view()),
 
 
 ]
