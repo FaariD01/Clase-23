@@ -1,0 +1,20 @@
+{% extends "AppCoder/padre.html" %} 
+
+{% load static %} 
+
+{% block contenidoQueCambia %}
+
+    
+        <br />
+        <form action="/AppCoder/buscar/"     method="get">{% csrf_token %}
+            <table>
+                {{miFormulario.as_table}}
+            </table>
+            <input type="number" name="camada" id="camada">
+
+            <input type="submit" value="Buscar" />
+        </form>
+    
+    
+
+{% endblock %}
