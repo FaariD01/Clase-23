@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from AppCoder.models import Curso
 from django.core import serializers
 from AppCoder.forms import CursoFormulario
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -84,4 +85,25 @@ class CursoList(ListView):
 class CursoCreate(CreateView):
     model = Curso
     fields = '__all__'
+    success_url = '/AppCoder/cursos/list/'
+
+
+# Editar
+
+class CursoEdit(UpdateView):
+    model = Curso
+    fields = '__all__'
+    success_url = '/AppCoder/cursos/list/'
+
+
+# Detalle
+class CursoDetail(DetailView):
+    model = Curso
+    template = 'AppCoder/curso_detail.html'
+
+# Borrar
+
+
+class CursoDelete(DeleteView):
+    model = Curso
     success_url = '/AppCoder/cursos/list/'
